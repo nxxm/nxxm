@@ -1,5 +1,12 @@
+
 # nxxm - C++ WebAssembly Ready - Github Connected Build System
 Please head up to [our website](https://nxxm.github.io/)
+
+## Support
+* [![Ask us on Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/gitterHQ/gitter)
+* [Ask us on Github Issues](https://gitter.im/gitterHQ/gitter)
+* [Contact via our Website](https://nxxm.github.io)
+
 
 # License
 Binaries delivered here are under copyright by nxxm, see [LICENSE](./LICENSE)
