@@ -1,4 +1,4 @@
-# nxxm - The C++ WebAssembly Ready - Github Connected Build System
+# nxxm - C++ WebAssembly Ready - Github Connected Build System
 Please head up to [our website](https://nxxm.github.io/)
 
 # License
