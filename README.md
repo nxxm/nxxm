@@ -4,7 +4,7 @@ Please head up to [our website](https://nxxm.github.io/)
 
 ## Support
 * [![Ask us on Gitter chat](https://badges.gitter.im/nxxm/community.svg)](https://gitter.im/nxxm/community) : Asks us anything and our community.
-* [Ask us on Github Issues](https://gitter.im/gitterHQ/gitter)
+* [Ask us on Github Issues](https://github.com/nxxm/nxxm/issues/new)
 * [Contact via our Website](https://nxxm.github.io)
 
 
