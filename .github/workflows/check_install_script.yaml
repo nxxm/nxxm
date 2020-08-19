@@ -21,7 +21,7 @@ jobs:
 
           # Test install succeeeded 
           test -f /usr/local/bin/nxxm
-          test -f ~/.nxxxm/0000001/downloads/nodejs.zip
+          test -f ~/.nxxm/0000001/downloads/nodejs.zip
           
 
   install-linux:
@@ -40,7 +40,7 @@ jobs:
           
           # Test install succeeeded 
           test -f /usr/local/bin/nxxm
-          test -f ~/.nxxxm/0000001/downloads/nodejs.zip
+          test -f ~/.nxxm/0000001/downloads/nodejs.zip
 
   install-windows-powershell:
     name: install-windows-powershell
@@ -57,5 +57,5 @@ jobs:
 
           # Test install succeeeded 
           if (!(Test-Path "C:\\Windows\\nxxm.exe" -PathType leaf)) { exit 1; }
-          if (!(Test-Path "C:\\.nxxm\\0000002\\downloads\\nodejs.zip" -PathType leaf)) { exit 1; }
+          if (!(Test-Path "C:\\.nxxm\\0000001\\downloads\\nodejs.zip" -PathType leaf)) { exit 1; }
         shell: powershell 
