@@ -31,7 +31,7 @@ jobs:
       - name: test_install_on_linux
         run: |
           if [ $GITHUB_EVENT_NAME = "pull_request" ]; then
-            script_source=${github.payload.pull_request.head.ref}
+            script_source=${GITHUB_HEAD_REF}
           else 
             script_source=${GITHUB_REF#refs/heads/}
           fi
