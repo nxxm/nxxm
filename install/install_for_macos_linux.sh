@@ -28,7 +28,7 @@ should_install_unzip() {
 if should_install_unzip; then
     info "unzip is needed to unzip the downloaded file, we are installing unzip with your package manager"
     echo "Could you validate with your password ? 😇 "
-    sudo apt-get install unzip -y ||   abort "Error while installing unzip"
+    sudo apt-get install unzip -y || abort "Error while installing unzip"
 fi
 
 info "Downloading nxxm..."
@@ -38,7 +38,7 @@ sudo unzip ~/nxxm.zip -d $INSTALL_FOLDER -x LICENSE && rm ~/nxxm.zip
 
 if [ $? -eq 0 ]; then
     info "nxxm successfully installed. Installing the dependencies..."
-    mkdir /tmp/install_nxxm && echo "#include <iostream> int main(){return 0;}">> ~/install_nxxm/installdeps.cpp
+    mkdir /tmp/install_nxxm && echo "#include <iostream> int main(){return 0;}">> /tmp/install_nxxm/installdeps.cpp
     $INSTALL_FOLDER/bin/nxxm /tmp/install_nxxm
     if [ $? -eq 0 ]; then
         info "nxxm and its dependencies have been successfully installed"
