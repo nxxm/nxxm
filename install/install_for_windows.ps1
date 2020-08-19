@@ -1,6 +1,4 @@
-﻿﻿#!/usr/bin/pwsh
-
-$INSTALL_FOLDER="C:\Windows"
+﻿$INSTALL_FOLDER="C:\Windows"
 $NXXM_URL="https://github.com/nxxm/nxxm/releases/download/v0.0.8/nxxm-v0.0.8-windows-win64.zip"
 $NXXM_EXE="C:\Windows\nxxm.exe"
 $INSTALL_FORDEPS = "C:\ProgramData\install_nxxm"
