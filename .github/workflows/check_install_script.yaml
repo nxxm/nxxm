@@ -12,10 +12,13 @@ jobs:
     steps:
       - name: test_install_on_macos
         run: |
-          set -e
           script_source=${GITHUB_REF#refs/heads/}
-          sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/nxxm/nxxm/${script_source}/install/install_for_macos_linux.sh)"
-        
+          sudo -E /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/nxxm/nxxm/${script_source}/install/install_for_macos_linux.sh)"
+
+          # Test install succeeeded 
+          test -f /usr/local/bin/nxxm
+          test -f ~/.nxxxm/0000002/downloads/nodejs.zip
+          
 
   install-linux:
     name: install-linux
@@ -23,9 +26,12 @@ jobs:
     steps:
       - name: test_install_on_linux
         run: |
-          set -e
           script_source=${GITHUB_REF#refs/heads/}
-          sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/nxxm/nxxm/${script_source}/install/install_for_macos_linux.sh)"
+          sudo -E /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/nxxm/nxxm/${script_source}/install/install_for_macos_linux.sh)"
+          
+          # Test install succeeeded 
+          test -f /usr/local/bin/nxxm
+          test -f ~/.nxxxm/0000002/downloads/nodejs.zip
 
   install-windows-powershell:
     name: install-windows-powershell
@@ -33,6 +39,10 @@ jobs:
     steps:
       - name: test_install_on_windows_powershell
         run: |
-         $script_source=$env:GITHUB_REF.replace('refs/heads/', '')
-         Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString("https://raw.githubusercontent.com/nxxm/nxxm/$script_source/install/install_for_windows.ps1"))
+          $script_source=$env:GITHUB_REF.replace('refs/heads/', '')
+          Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString("https://raw.githubusercontent.com/nxxm/nxxm/$script_source/install/install_for_windows.ps1"))
+
+          # Test install succeeeded 
+          if (!(Test-Path "C:\\Windows\\nxxm.exe" -PathType leaf)) { exit 1; }
+          if (!(Test-Path "C:\\.nxxm\\0000002\\downloads\\nodejs.zip" -PathType leaf)) { exit 1; }
         shell: powershell 
