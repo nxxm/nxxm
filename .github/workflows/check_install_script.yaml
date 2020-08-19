@@ -12,8 +12,8 @@ jobs:
     steps:
       - name: test_install_on_macos
         run: |
-          script_source=${GITHUB_REF#refs/heads/}
-          sudo -E /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/nxxm/nxxm/${script_source}/install/install_for_macos_linux.sh)"
+          export script_source=${GITHUB_REF#refs/heads/}
+          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/nxxm/nxxm/${script_source}/install/install_for_macos_linux.sh)"
 
           # Test install succeeeded 
           test -f /usr/local/bin/nxxm
@@ -26,8 +26,9 @@ jobs:
     steps:
       - name: test_install_on_linux
         run: |
-          script_source=${GITHUB_REF#refs/heads/}
-          sudo -E /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/nxxm/nxxm/${script_source}/install/install_for_macos_linux.sh)"
+          export script_source=${GITHUB_REF#refs/heads/}
+          echo "Script source : ${script_source}"
+          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/nxxm/nxxm/${script_source}/install/install_for_macos_linux.sh)"
           
           # Test install succeeeded 
           test -f /usr/local/bin/nxxm
