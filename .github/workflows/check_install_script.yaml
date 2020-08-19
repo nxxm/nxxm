@@ -12,7 +12,11 @@ jobs:
     steps:
       - name: test_install_on_macos
         run: |
-          export script_source=${GITHUB_REF#refs/heads/}
+          if [ $GITHUB_EVENT_NAME = "pull_request" ]; then
+            script_source=${GITHUB_HEAD_REF}
+          else 
+            script_source=${GITHUB_REF#refs/heads/}
+          fi
           /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/nxxm/nxxm/${script_source}/install/install_for_macos_linux.sh)"
 
           # Test install succeeeded 
@@ -26,8 +30,13 @@ jobs:
     steps:
       - name: test_install_on_linux
         run: |
-          export script_source=${GITHUB_REF#refs/heads/}
+          if [ $GITHUB_EVENT_NAME = "pull_request" ]; then
+            script_source=${github.payload.pull_request.head.ref}
+          else 
+            script_source=${GITHUB_REF#refs/heads/}
+          fi
           echo "Script source : ${script_source}"
+          ${github.payload.pull_request.head.ref}
           /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/nxxm/nxxm/${script_source}/install/install_for_macos_linux.sh)"
           
           # Test install succeeeded 
@@ -40,7 +49,11 @@ jobs:
     steps:
       - name: test_install_on_windows_powershell
         run: |
-          $script_source=$env:GITHUB_REF.replace('refs/heads/', '')
+          if ($env:GITHUB_EVENT_NAME -eq "pull_request") {
+            $script_source = $env:GITHUB_HEAD_REF.replace('refs/heads/', '')
+          } else {
+            $script_source = $env:GITHUB_REF.replace('refs/heads/', '')
+          }
           Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString("https://raw.githubusercontent.com/nxxm/nxxm/$script_source/install/install_for_windows.ps1"))
 
           # Test install succeeeded 
