@@ -1,0 +1,36 @@
+name: check_install_script
+on:
+  schedule:
+    - cron : '0 0 * * *' # Every midnight check the released version of default branch
+  pull_request:
+  
+
+jobs:
+  install-macos:
+    name: install-macos
+    runs-on: macos-latest
+    steps:
+      - name: test_install_on_macos
+        run: |
+          script_source=${GITHUB_REF#refs/heads/}
+          sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/nxxm/nxxm/${script_source}/install/install_for_macos_linux.sh)"
+        
+
+  install-linux:
+    name: install-linux
+    runs-on: ubuntu-latest
+    steps:
+      - name: test_install_on_linux
+        run: |
+          script_source=${GITHUB_REF#refs/heads/}
+          sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/nxxm/nxxm/${script_source}/install/install_for_macos_linux.sh)"
+
+  install-windows-powershell:
+    name: install-windows-powershell
+    runs-on: windows-latest
+    steps:
+      - name: test_install_on_windows_powershell
+        run: |
+         $script_source=$env:GITHUB_REF.replace('refs/heads/', '')
+         Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString("https://raw.githubusercontent.com/nxxm/nxxm/$script_source/install/install_for_windows.ps1"))
+        shell: powershell 

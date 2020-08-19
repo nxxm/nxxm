@@ -45,7 +45,7 @@ if (!$?){
 }
 rm -R ~/nxxm
 
-info "Nxxm is setting up its dependencies"
+info "nxxm is setting up its dependencies"
 New-Item -ItemType "file" -Path $INSTALL_FORDEPS"\installdeps.cpp" -Force
 add-content $INSTALL_FORDEPS"\installdeps.cpp" $texte
 
@@ -59,7 +59,7 @@ Do {
 } while ($objExec.StdOut.AtEndOfStream -ne $true)
    
 if ($?){
-    info "Nxxm and its dependencies have been successfully installed"
+    info "nxxm and its dependencies have been successfully installed"
     rm -R $INSTALL_FORDEPS
 }else{
     rm - $INSTALL_FORDEPS
