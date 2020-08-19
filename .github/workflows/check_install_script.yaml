@@ -12,6 +12,7 @@ jobs:
     steps:
       - name: test_install_on_macos
         run: |
+          set -e
           script_source=${GITHUB_REF#refs/heads/}
           sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/nxxm/nxxm/${script_source}/install/install_for_macos_linux.sh)"
         
@@ -22,6 +23,7 @@ jobs:
     steps:
       - name: test_install_on_linux
         run: |
+          set -e
           script_source=${GITHUB_REF#refs/heads/}
           sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/nxxm/nxxm/${script_source}/install/install_for_macos_linux.sh)"
 
