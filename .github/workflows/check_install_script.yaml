@@ -36,7 +36,6 @@ jobs:
             script_source=${GITHUB_REF#refs/heads/}
           fi
           echo "Script source : ${script_source}"
-          ${github.payload.pull_request.head.ref}
           /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/nxxm/nxxm/${script_source}/install/install_for_macos_linux.sh)"
           
           # Test install succeeeded 
