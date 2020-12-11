@@ -1,0 +1,67 @@
+name: check_install_script
+on:
+  push:
+    branches:
+      - master
+  schedule:
+    - cron : '0 0 * * *' # Every midnight check the released version of default branch
+  pull_request:
+  
+
+jobs:
+  install-macos:
+    name: install-macos
+    runs-on: macos-latest
+    steps:
+      - name: test_install_on_macos
+        run: |
+          if [ $GITHUB_EVENT_NAME = "pull_request" ]; then
+            script_source=${GITHUB_HEAD_REF}
+          else 
+            script_source=${GITHUB_REF#refs/heads/}
+          fi
+          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/nxxm/nxxm/${script_source}/install/install_for_macos_linux.sh)"
+
+          # Test install succeeeded 
+          test -f /usr/local/bin/nxxm
+          test -f ~/.nxxm/0000002/downloads/nodejs.zip
+          test -f /tmp/install_nxxm/build/wasm-cxx17/bin/installdeps.js
+          
+
+  install-linux:
+    name: install-linux
+    runs-on: ubuntu-latest
+    steps:
+      - name: test_install_on_linux
+        run: |
+          if [ $GITHUB_EVENT_NAME = "pull_request" ]; then
+            script_source=${GITHUB_HEAD_REF}
+          else 
+            script_source=${GITHUB_REF#refs/heads/}
+          fi
+          echo "Script source : ${script_source}"
+          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/nxxm/nxxm/${script_source}/install/install_for_macos_linux.sh)"
+          
+          # Test install succeeeded 
+          test -f /usr/local/bin/nxxm
+          test -f ~/.nxxm/0000002/downloads/nodejs.zip
+          test -f /tmp/install_nxxm/build/wasm-cxx17/bin/installdeps.js
+
+  install-windows-powershell:
+    name: install-windows-powershell
+    runs-on: windows-latest
+    steps:
+      - name: test_install_on_windows_powershell
+        run: |
+          $env:NXXM_HOME_DIR = "C:\.nxxm"
+          if ($env:GITHUB_EVENT_NAME -eq "pull_request") {
+            $script_source = $env:GITHUB_HEAD_REF.replace('refs/heads/', '')
+          } else {
+            $script_source = $env:GITHUB_REF.replace('refs/heads/', '')
+          }
+          . { iwr -useb https://raw.githubusercontent.com/nxxm/nxxm/$script_source/install/install_for_windows.ps1 } | iex 
+
+          # Test install succeeeded 
+          if (!(Test-Path "C:\\ProgramData\\nxxm\\nxxm.exe" -PathType leaf)) { exit 1; }
+          if (!(Test-Path "$env:NXXM_HOME_DIR\\0000002\\downloads\\nodejs.zip" -PathType leaf)) { exit 1; }
+        shell: powershell 

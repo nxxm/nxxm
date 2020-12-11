@@ -1,5 +1,35 @@
 # nxxm : CHANGELOG
 
+## v0.0.9 - codename **far west** 
+
+### Features
+  * `nxxm ci` automatically generates a docker enabled Github Action to build C & C++ code
+  * Configurable Build engines via `build_engines_mapping.json`
+  * Simplified the nxxm installation process thanks to the one liner install scripts now available
+  * Support for macOS Big Sur
+  * Default NodeJS included is 14.7.0
+  * Default CMake included is 3.18.4
+  * Possibility to specify `NXXM_HOME_DIR` on the environment, to specify the main nxxm download and build cache location ( _c.f._  [NXXM\_HOME\_DIR Documentation](https://nxxm-docs.readthedocs.io/en/latest/09-Dependencies_nxxm.html)
+  * Build with Visual Studio 16 2019 MSVC via `nxxm . -t vs-16-2019-win64-cxx17`
+
+### Bug fixes
+  * Perl is now shipped by nxxm on Windows to accomodate special build processes including OpenSSL
+  * Now multiple .cpp files at the top-level folder of an application project ( one with a main() and others without function) work.
+  * Fixed build recipe generation for projects in different directories that current nxxm working directory
+  * Fix host & cross compiling Boost on Windows
+  * Now after 5 downloads retries, nxxm refuses to continue if the SHA1 checksum isn't correct. Precedent version would use the incorrect file.
+  * Command line flags `--dont-upgrade, --force-upgrade, --auto-upgrade` can now be passed without any complaints from the options parser, to control nxxm auto-update feature.
+  * Improved drastically the test suite to handle build corner cases found at our customers
+
+### Known issues
+  - Compiling a project by providing a relative path to it : `nxxm relative/path/to-project` doesn't work. `nxxm .` inside the folder of the project works. 
+  - Compiling a project that is stored in a Path where a folder has a space in the name  doesn't work
+
+##### Archives Checksums
+nxxm-v0.0.9-linux-x86_64.zip:FE64B5D4DC96FA39BAA97659FAF6CB8F5C25031A
+nxxm-v0.0.9-macOS.zip:91A47E79132B173CF2BB176A4E6693FAC8B48FCA
+nxxm-v0.0.9-windows-win64.zip:308252401C2467F850611C9336782F5E28215EA1
+
 ## ALPHA v0.0.8 
 ### Features
 * Webassembly builds with wasm threads, emscripten 1.39.5 & NodeJS v14.2.0
