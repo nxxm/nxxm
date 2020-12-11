@@ -50,6 +50,7 @@ jobs:
     steps:
       - name: test_install_on_windows_powershell
         run: |
+          $env:NXXM_HOME_DIR = "D:\\a\\.nxxm"
           if ($env:GITHUB_EVENT_NAME -eq "pull_request") {
             $script_source = $env:GITHUB_HEAD_REF.replace('refs/heads/', '')
           } else {
@@ -59,5 +60,5 @@ jobs:
 
           # Test install succeeeded 
           if (!(Test-Path "C:\\ProgramData\\nxxm\\nxxm.exe" -PathType leaf)) { exit 1; }
-          if (!(Test-Path "C:\\.nxxm\\0000001\\downloads\\nodejs.zip" -PathType leaf)) { exit 1; }
+          if (!(Test-Path "$env:NXXM_HOME_DIR\\0000001\\downloads\\nodejs.zip" -PathType leaf)) { exit 1; }
         shell: powershell 
