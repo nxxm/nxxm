@@ -2,6 +2,8 @@
 
 ## v0.0.9 - codename **far west** 
 
+## v0.0.9 - codename **far west** 
+
 ### Features
   * `nxxm ci` automatically generates a docker enabled Github Action to build C & C++ code
   * Configurable Build engines via `build_engines_mapping.json`
@@ -23,6 +25,12 @@
 
 ### Known issues
   - Compiling a project by providing a relative path to it : `nxxm relative/path/to-project` doesn't work. `nxxm .` inside the folder of the project works. 
+  - Compiling a project that is stored in a Path where a folder has a space in the name  doesn't work
+
+##### Archives Checksums
+nxxm-v0.0.9-linux-x86_64.zip:FE64B5D4DC96FA39BAA97659FAF6CB8F5C25031A
+nxxm-v0.0.9-macOS.zip:91A47E79132B173CF2BB176A4E6693FAC8B48FCA
+nxxm-v0.0.9-windows-win64.zip:308252401C2467F850611C9336782F5E28215EA1
 
 ## ALPHA v0.0.8 
 ### Features
