@@ -2,8 +2,6 @@
 
 ## v0.0.9 - codename **far west** 
 
-## v0.0.9 - codename **far west** 
-
 ### Features
   * `nxxm ci` automatically generates a docker enabled Github Action to build C & C++ code
   * Configurable Build engines via `build_engines_mapping.json`
