@@ -1,5 +1,6 @@
 
-# nxxm - C++ WebAssembly Ready - Github Connected Build System
+# nxxm - Smart C++ Dependency Manager & Build System
+*WebAssembly Enabled*
 Please head up to [our website](https://nxxm.github.io/)
 
 ## Support
