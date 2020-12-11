@@ -50,7 +50,6 @@ jobs:
     steps:
       - name: test_install_on_windows_powershell
         run: |
-          mkdir -Force D:\a\.nxxm\
           $env:NXXM_HOME_DIR = "D:\a\.nxxm"
           if ($env:GITHUB_EVENT_NAME -eq "pull_request") {
             $script_source = $env:GITHUB_HEAD_REF.replace('refs/heads/', '')
