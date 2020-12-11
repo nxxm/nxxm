@@ -21,7 +21,7 @@ jobs:
 
           # Test install succeeeded 
           test -f /usr/local/bin/nxxm
-          test -f ~/.nxxm/0000001/downloads/nodejs.zip
+          test -f ~/.nxxm/0000002/downloads/nodejs.zip
           test -f /tmp/install_nxxm/build/wasm-cxx17/bin/installdeps.js
           
 
@@ -41,7 +41,7 @@ jobs:
           
           # Test install succeeeded 
           test -f /usr/local/bin/nxxm
-          test -f ~/.nxxm/0000001/downloads/nodejs.zip
+          test -f ~/.nxxm/0000002/downloads/nodejs.zip
           test -f /tmp/install_nxxm/build/wasm-cxx17/bin/installdeps.js
 
   install-windows-powershell:
