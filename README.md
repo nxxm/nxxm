@@ -10,16 +10,11 @@ Please head up to [our website](https://nxxm.github.io/)
 
 
 ### Install on Linux / macOS 
-
-```sh
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/nxxm/nxxm/master/install/install_for_macos_linux.sh)"
-```
+`/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/nxxm/nxxm/master/install/install_for_macos_linux.sh)"`
 Paste that in a Linux shell prompt or in a macOS Terminal.
 
 ### Install on Windows 10
-```sh
-. { iwr -useb https://raw.githubusercontent.com/nxxm/nxxm/master/install/install_for_windows.ps1 } | iex
-```
+`. { iwr -useb https://raw.githubusercontent.com/nxxm/nxxm/master/install/install_for_windows.ps1 } | iex`
 Paste that in a Powershell (run as Administartor).
 
 
