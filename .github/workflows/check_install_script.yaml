@@ -58,7 +58,6 @@ jobs:
           Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString("https://raw.githubusercontent.com/nxxm/nxxm/$script_source/install/install_for_windows.ps1"))
 
           # Test install succeeeded 
-          if (!(Test-Path "C:\\Windows\\nxxm.exe" -PathType leaf)) { exit 1; }
+          if (!(Test-Path "C:\\ProgramData\\nxxm\\nxxm.exe" -PathType leaf)) { exit 1; }
           if (!(Test-Path "C:\\.nxxm\\0000001\\downloads\\nodejs.zip" -PathType leaf)) { exit 1; }
-          if (!(Test-Path "C:\ProgramData\install_nxxm\\wasm-cxx17\\bin\\installdeps.js" -PathType leaf)) { exit 1; }
         shell: powershell 
