@@ -61,5 +61,5 @@ jobs:
 
           # Test install succeeeded 
           if (!(Test-Path "C:\\ProgramData\\nxxm\\nxxm.exe" -PathType leaf)) { exit 1; }
-          if (!(Test-Path "$env:NXXM_HOME_DIR\\0000001\\downloads\\nodejs.zip" -PathType leaf)) { exit 1; }
+          if (!(Test-Path "$env:NXXM_HOME_DIR\\0000002\\downloads\\nodejs.zip" -PathType leaf)) { exit 1; }
         shell: powershell 
