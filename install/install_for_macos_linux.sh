@@ -1,11 +1,11 @@
 #!/bin/bash
 
 if [ "$(uname)" == "Linux" ]; then
-  NXXM_URL="https://github.com/nxxm/nxxm/releases/download/v0.0.8/nxxm-v0.0.8-linux-x86_64.zip"
+  NXXM_URL="https://github.com/nxxm/nxxm/releases/download/v0.0.9/nxxm-v0.0.9-linux-x86_64.zip"
 fi
 
 if [ "$(uname)" == "Darwin" ]; then
-  NXXM_URL="https://github.com/nxxm/nxxm/releases/download/v0.0.8/nxxm-v0.0.8-macOS.zip"
+  NXXM_URL="https://github.com/nxxm/nxxm/releases/download/v0.0.9/nxxm-v0.0.9-macOS.zip"
 fi
 
 INSTALL_FOLDER="/usr/local"

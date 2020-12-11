@@ -1,5 +1,5 @@
 $INSTALL_FOLDER="C:\ProgramData\nxxm"
-$NXXM_URL="https://github.com/nxxm/nxxm/releases/download/v0.0.8/nxxm-v0.0.8-windows-win64.zip"
+$NXXM_URL="https://github.com/nxxm/nxxm/releases/download/v0.0.8/nxxm-v0.0.9-windows-win64.zip"
 $NXXM_EXE="$INSTALL_FOLDER\nxxm.exe"
 
 $texte = '#include <iostream>
