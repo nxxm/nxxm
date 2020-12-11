@@ -1,6 +1,8 @@
 name: check_install_script
 on:
   push:
+    branches:
+      - master
     - master
   schedule:
     - cron : '0 0 * * *' # Every midnight check the released version of default branch
