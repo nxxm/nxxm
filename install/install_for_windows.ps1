@@ -1,7 +1,6 @@
-﻿$INSTALL_FOLDER="C:\Windows"
+$INSTALL_FOLDER="C:\ProgramData\nxxm"
 $NXXM_URL="https://github.com/nxxm/nxxm/releases/download/v0.0.8/nxxm-v0.0.8-windows-win64.zip"
-$NXXM_EXE="C:\Windows\nxxm.exe"
-$INSTALL_FORDEPS = "C:\ProgramData\install_nxxm"
+$NXXM_EXE="$INSTALL_FOLDER\nxxm.exe"
 
 $texte = '#include <iostream>
 int main()
@@ -15,7 +14,6 @@ function Abort {
         $Message
     )
    Write-Output " $Message "
-  exit 1
 }
 
 function Info {
@@ -25,29 +23,56 @@ function Info {
   Write-Output "---> $Message "
 }
 
+function New-TemporaryDirectory {
+  $parent = [System.IO.Path]::GetTempPath()
+  [string] $name = [System.Guid]::NewGuid()
+  $path = (Join-Path -Path $parent -ChildPath $name)
+  New-Item -ItemType Directory -Path $path
+  return $path
+}
+
 info "Downloading nxxm..."
-mkdir ~/nxxm
+
+$download_dir = New-TemporaryDirectory
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-Invoke-WebRequest -Uri $NXXM_URL -OutFile ~/nxxm/nxxm.zip
+$downloaded_nxxm_zip = (Join-Path -Path $download_dir -ChildPath "nxxm.zip")[0]
+Write-Output "Dowloading nxxm archive in $downloaded_nxxm_zip"
+Invoke-WebRequest -Uri $NXXM_URL -OutFile $downloaded_nxxm_zip
 
 if(!$?) {
     Abort("Could not download nxxm")
+    return
 }
 
-info "Installing nxxm in  $INSTALL_FOLDER"
-Expand-Archive -Force -path ~/nxxm/nxxm.zip -destinationpath ~/nxxm
-Copy-Item -Force "~/nxxm/bin/nxxm.exe" -Destination $INSTALL_FOLDER
+info "Installing nxxm in $INSTALL_FOLDER"
+$nxxm_source_exe = $download_dir[0]
+$nxxm_source_exe = "$nxxm_source_exe\bin\nxxm.exe"
+
+New-Item -Force -ItemType Directory -Path $INSTALL_FOLDER
+Expand-Archive -Force -path $downloaded_nxxm_zip -destinationpath $download_dir[0]
+Copy-Item -Force $nxxm_source_exe -Destination $NXXM_EXE
 
 if (!$?){
-    Abort("Could not install nxxm")
+   Abort("Could not install nxxm")
+   return
 }
-rm -R ~/nxxm
 
-info "nxxm is setting up its dependencies"
-New-Item -ItemType "file" -Path $INSTALL_FORDEPS"\installdeps.cpp" -Force
-add-content $INSTALL_FORDEPS"\installdeps.cpp" $texte
+[Environment]::SetEnvironmentVariable(
+    "Path",
+    [Environment]::GetEnvironmentVariable("Path", [EnvironmentVariableTarget]::Machine) + ";$INSTALL_FOLDER",
+    [EnvironmentVariableTarget]::Machine)
 
-$command = "cmd.exe /C ""$NXXM_EXE $INSTALL_FORDEPS """
+if (!$?){
+   Abort("Could not put nxxm on the Path environment variable")
+   return
+}
+
+info "nxxm is installed, downloading included tools."
+$installdeps_folder = New-TemporaryDirectory
+$installdeps_file = (Join-Path -Path $installdeps_folder -ChildPath "installdeps.cpp")[0]
+$text = $texte | Out-File -Encoding "ASCII" -FilePath "$installdeps_file"
+
+$command = "cmd.exe /C ""$NXXM_EXE $installdeps_folder """
 $shell = New-Object -Com WScript.Shell
 $objExec = $shell.Exec($command)
 
@@ -57,9 +82,7 @@ Do {
 } while ($objExec.StdOut.AtEndOfStream -ne $true)
    
 if ($?){
-    info "nxxm and its dependencies have been successfully installed"
-    rm -R $INSTALL_FORDEPS
+    info "nxxm has been installed in $INSTALL_FOLDER. In either a new cmd of after a reboot nxxm will be available on your Path."
 }else{
-    rm - $INSTALL_FORDEPS
-    abort "Installation failed"
+    Abort "Installation failed, please contact us via nxxm.io. We would be happy to help you."
 }
