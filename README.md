@@ -3,6 +3,19 @@
 *WebAssembly Enabled*
 Please head up to [our website](https://nxxm.github.io/)
 
+### Install on Linux / macOS 
+
+```sh
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/nxxm/nxxm/master/install/install_for_macos_linux.sh)"
+```
+Paste that in a Linux shell prompt or in a macOS Terminal.
+
+### Install on Windows 10
+```sh
+. { iwr -useb https://raw.githubusercontent.com/nxxm/nxxm/master/install/install_for_windows.ps1 } | iex
+```
+Paste that in a Powershell (run as Administartor).
+
 ## Support
 * [![Ask us on Gitter chat](https://badges.gitter.im/nxxm/community.svg)](https://gitter.im/nxxm/community) : Asks us anything and our community.
 * [Ask us on Github Issues](https://github.com/nxxm/nxxm/issues/new)
