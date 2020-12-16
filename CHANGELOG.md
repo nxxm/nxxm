@@ -1,5 +1,16 @@
 # nxxm : CHANGELOG
 
+## v0.0.10 - codename **far west hotfix**
+
+### Bug fixes
+  - Compiling a project by providing a relative path to it : `nxxm relative/path/to-project` now works.
+  - Compiling a project that is stored in a Path where a folder has a space in the name is fixed. ( project folder with spaces don't ).
+
+##### Archives Checksums
+nxxm-v0.0.10-linux-x86_64.zip:6637A831EEC8997AC46121BF9A00C75B60422F48
+nxxm-v0.0.10-macOS.zip:77B49BB0D6A2596BF8C71DA8994D0025FA06A465
+nxxm-v0.0.10-windows-win64.zip:53F7FACEBBF8270D8640D42E867B5BAF264436BE
+
 ## v0.0.9 - codename **far west** 
 
 ### Features
