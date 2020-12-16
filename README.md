@@ -1,6 +1,6 @@
 
 # nxxm - Smart C++ Dependency Manager & Build System
-*WebAssembly Enabled*
+*WebAssembly Enabled and supports any of your platforms or environment !*
 Please head up to [our website](https://nxxm.github.io/)
 
 ## Support
