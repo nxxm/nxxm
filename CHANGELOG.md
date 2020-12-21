@@ -1,5 +1,20 @@
 # nxxm : CHANGELOG
 
+## v0.0.11 - codename **christmas cactus** 🎄🌵
+
+### Features
+  - [nxxm.io vscode plugin](https://marketplace.visualstudio.com/items?itemName=nxxm.nxxm) initial release !
+  - Support for proper autocompletion in Visual Studio by generating `c_cpp_properties.json`
+
+### Bug fixes
+  - Internal nxxm.io commands are correctly processed in presence of folders or file of the same name
+  - macOS nxxm upgrades are properly done with the nxxm.io vscode plugin
+
+##### Archives Checksums
+nxxm-v0.0.11-linux-x86_64.zip:62B85CC0E76DE4D9FBE83076BF9041882AD9B6EE
+nxxm-v0.0.11-macOS.zip:4B72585CF72A1C7A33DFB5FB4BCA93A99A94A86B
+nxxm-v0.0.11-windows-win64.zip:28497FE24949BAB0BB44E1CE87B1E9C4C940FFA4
+
 ## v0.0.10 - codename **far west hotfix**
 
 ### Bug fixes

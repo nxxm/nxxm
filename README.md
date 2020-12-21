@@ -3,11 +3,19 @@
 *WebAssembly Enabled and supports any of your platforms or environment !*
 Please head up to [our website](https://nxxm.github.io/)
 
+## Flavours
+Available as command line tool or vscode plugin !
+
 ## Support
 * [![Ask us on Gitter chat](https://badges.gitter.im/nxxm/community.svg)](https://gitter.im/nxxm/community) : Asks us anything and our community.
 * [Ask us on Github Issues](https://github.com/nxxm/nxxm/issues/new)
 * [Contact via our Website](https://nxxm.github.io)
 
+### Add to vscode
+
+[Click Here to add nxxm.io to vscode]()
+
+![add to vscode](./nxxm-io-plugin.png)
 
 ### Install on Linux / macOS 
 `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/nxxm/nxxm/master/install/install_for_macos_linux.sh)"`
