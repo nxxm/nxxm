@@ -1,5 +1,21 @@
 # nxxm : CHANGELOG
 
+## v0.0.12 - codename **delicious dilution** 🍸
+
+### Features
+  - Clang v11.0.0 for windows, linux & macOS with libc++ for host native development included. No additional installation required.
+  - nxxm distributions ( compilers and controlled environment ) are managed via a distro.json file, that can be user-overriden ( i.e. with `NXXM_DISTRO_JSON` ).
+  - Go included within the nxxm distribution
+
+### Bug fixes
+  - Fix autocompletion in VSCode when .vscode folder is inexistant
+  - VSCode nxxm console supports keyboard inputs & colors during compilation 
+  - Parallel build could use an infinite count of jobs when not specifying `-j,--jobs`
+
+### Known issues 
+  - On windows with Clang an OpenSSL replacement is provided because of OpenSSL limitations: BoringSSL which is 1:1 API compatible and maintained by Google and the nxxm core team.
+
+
 ## v0.0.11 - codename **christmas cactus** 🎄🌵
 
 ### Features
