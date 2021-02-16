@@ -23,7 +23,11 @@ Available as command line tool or vscode plugin !
 Paste that in a Linux shell prompt or in a macOS Terminal.
 
 ### Install on Windows 10
-`. { iwr -useb https://raw.githubusercontent.com/nxxm/nxxm/master/install/install_for_windows.ps1 } | iex`
+```
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls, [Net.SecurityProtocolType]::Tls11, [Net.SecurityProtocolType]::Tls12, [Net.SecurityProtocolType]::Ssl3
+[Net.ServicePointManager]::SecurityProtocol = "Tls, Tls11, Tls12, Ssl3"
+. { iwr -useb https://raw.githubusercontent.com/nxxm/nxxm/master/install/install_for_windows.ps1 } | iex
+```
 
 Paste that in a Powershell (run as Administartor).
 
