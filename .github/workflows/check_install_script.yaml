@@ -24,7 +24,7 @@ jobs:
 
           # Test install succeeeded 
           test -f /usr/local/bin/nxxm
-          test -f ~/.nxxm/6d10a62/downloads/nodejs.zip
+          test -f ~/.nxxm/7803ad7/downloads/nodejs.zip
           test -f /tmp/install_nxxm/build/wasm-cxx17/bin/installdeps.js
           
 
@@ -44,7 +44,7 @@ jobs:
           
           # Test install succeeeded 
           test -f /usr/local/bin/nxxm
-          test -f ~/.nxxm/6d10a62/downloads/nodejs.zip
+          test -f ~/.nxxm/7803ad7/downloads/nodejs.zip
           test -f /tmp/install_nxxm/build/wasm-cxx17/bin/installdeps.js
 
   install-windows-powershell:
@@ -53,7 +53,6 @@ jobs:
     steps:
       - name: test_install_on_windows_powershell
         run: |
-          $env:NXXM_HOME_DIR = "C:\.nxxm"
           if ($env:GITHUB_EVENT_NAME -eq "pull_request") {
             $script_source = $env:GITHUB_HEAD_REF.replace('refs/heads/', '')
           } else {
@@ -63,5 +62,5 @@ jobs:
 
           # Test install succeeeded 
           if (!(Test-Path "C:\\ProgramData\\nxxm\\nxxm.exe" -PathType leaf)) { exit 1; }
-          if (!(Test-Path "$env:NXXM_HOME_DIR\\6d10a62\\downloads\\nodejs.zip" -PathType leaf)) { exit 1; }
+          if (!(Test-Path "C:\\.nxxm\\7803ad7\\downloads\\nodejs.zip" -PathType leaf)) { exit 1; }
         shell: powershell 
