@@ -1,11 +1,24 @@
 # nxxm : CHANGELOG
 
+## v0.0.13 - codename **embedded embarrassment** 💉
+
+### Bug fixes
+  - Fix installation of the emsdk / emscripten compiler since changes in the emsdk installation scheme.
+
+nxxm: 468e7d57d2ec568b2e5153a54df00d3811b67159
+
+##### Archives Checksums
+nxxm-v0.0.13-linux-x86_64.zip:ECA92ADF1ED739EB45FB52C784BA542BA0FEEDC9
+nxxm-v0.0.13-macOS.zip:73E6D5B642A56E1F8946798451F0A9FE887C2178
+nxxm-v0.0.13-windows-win64.zip:65873C89451305C57D26CD21B2BAF04923A845F1
+
 ## v0.0.12 - codename **delicious dilution** 🍸
 
 ### Features
   - Clang v11.0.0 for windows, linux & macOS with libc++ for host native development included. No additional installation required.
   - nxxm distributions ( compilers and controlled environment ) are managed via a distro.json file, that can be user-overriden ( i.e. with `NXXM_DISTRO_JSON` ).
   - Go included within the nxxm distribution
+  - Official nxxm Docker image for CI is now based on Ubuntu 20.04 LTS
 
 ### Bug fixes
   - Fix autocompletion in VSCode when .vscode folder is inexistant
@@ -15,6 +28,12 @@
 ### Known issues 
   - On windows with Clang an OpenSSL replacement is provided because of OpenSSL limitations: BoringSSL which is 1:1 API compatible and maintained by Google and the nxxm core team.
 
+nxxm: a17dff230a32f083135f223b51a314e2e525d17e
+
+##### Archives Checksums
+nxxm-v0.0.12-linux-x86_64.zip:B77413F9DB8734114DCD8ECAC4F5754C8311FB51
+nxxm-v0.0.12-macOS.zip:60F3DEADB4D3249344787959231A47BB16067C35
+nxxm-v0.0.12-windows-win64.zip:73DB9B120354A4E9CAD3D872E8EA560EFED6B5ED
 
 ## v0.0.11 - codename **christmas cactus** 🎄🌵
 
