@@ -1,5 +1,5 @@
 $INSTALL_FOLDER="C:\ProgramData\nxxm"
-$NXXM_URL="https://github.com/nxxm/nxxm/releases/download/v0.0.13/nxxm-v0.0.13-windows-win64.zip"
+$NXXM_URL="https://github.com/nxxm/nxxm/releases/download/v0.0.12/nxxm-v0.0.12-windows-win64.zip"
 $NXXM_EXE="$INSTALL_FOLDER\nxxm.exe"
 
 $texte = '#include <iostream>
@@ -75,6 +75,11 @@ $text = $texte | Out-File -Encoding "ASCII" -FilePath "$installdeps_file"
 $command = "cmd.exe /C ""$NXXM_EXE $installdeps_folder """
 $shell = New-Object -Com WScript.Shell
 $objExec = $shell.Exec($command)
+if (!($?))
+{
+    Abort "Installation failed, please contact us via nxxm.io. We would be happy to help you."
+    exit 1
+}
 
 Do { 
 	$line = $objExec.StdOut.ReadLine()
