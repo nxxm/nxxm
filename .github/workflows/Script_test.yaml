@@ -20,8 +20,6 @@ jobs:
             $script_source = $env:GITHUB_REF.replace('refs/heads/', '')
           }
           . { iwr -useb https://raw.githubusercontent.com/nxxm/nxxm/$script_source/install/install_for_windows.ps1 } | iex 
-          if ($?) {}
-          else {exit 1}
 
           # Test install succeeeded 
           if (!(Test-Path "C:\\ProgramData\\nxxm\\nxxm.exe" -PathType leaf)) { exit 1; }
