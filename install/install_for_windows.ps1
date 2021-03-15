@@ -76,8 +76,8 @@ $text = $texte | Out-File -Encoding "ASCII" -FilePath "$installdeps_file"
 $NXXM_EXE $installdeps_folder --dont-upgrade
 $command = "cmd.exe /C ""$NXXM_EXE $installdeps_folder --dont-upgrade """
 $shell = New-Object -Com WScript.Shell
- $shell.Exec($command)
-
+$objExec = $shell.Exec($command)
+info "Variable chiante $objExec "
 # New-Item "C:\ProgramData\installdeps_folder" -itemType Directory
 # New-Item "C:\ProgramData\installdeps_folder\installdeps.cpp" -itemType File
 #cmd.exe /c "C:\ProgramData\nxxm\nxxm.exe C:\ProgramData\installdeps_folder\ --dont-upgrade"
