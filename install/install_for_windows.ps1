@@ -72,7 +72,7 @@ $installdeps_folder = New-TemporaryDirectory
 $installdeps_file = (Join-Path -Path $installdeps_folder -ChildPath "installdeps.cpp")[0]
 $text = $texte | Out-File -Encoding "ASCII" -FilePath "$installdeps_file"
 
-$command = "cmd.exe /C ""$NXXM_EXE $installdeps_folder """
+$command = "cmd.exe /C ""$NXXM_EXE $installdeps_folder --dont-upgrade """
 $shell = New-Object -Com WScript.Shell
 $objExec = $shell.Exec($command)
 if (!($?))
