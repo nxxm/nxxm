@@ -59,8 +59,8 @@ jobs:
             $script_source = $env:GITHUB_REF.replace('refs/heads/', '')
           }
           . { iwr -useb https://raw.githubusercontent.com/nxxm/nxxm/$script_source/install/install_for_windows.ps1 } | iex 
-
+          if (!($?)) {exit 1}
           # Test install succeeeded 
           if (!(Test-Path "C:\\ProgramData\\nxxm\\nxxm.exe" -PathType leaf)) { exit 1; }
-          if (!(Test-Path "C:\\.nxxm\\7803ad7\\downloads\\nodejs.zip" -PathType leaf)) { exit 1; }
+          if (!(Test-Path "C:\\.nxxm\\7803ad7\\downloads\\go.zip" -PathType leaf)) { exit 1; }
         shell: powershell 
