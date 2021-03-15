@@ -75,6 +75,7 @@ $text = $texte | Out-File -Encoding "ASCII" -FilePath "$installdeps_file"
 $command = "cmd.exe /C ""$NXXM_EXE $installdeps_folder --dont-upgrade """
 $shell = New-Object -Com WScript.Shell
 $objExec = $shell.Exec($command)
+info "Variable de l enfer $objExec"
 if (!($?))
 {
     Abort "Installation failed, please contact us via nxxm.io. We would be happy to help you."
