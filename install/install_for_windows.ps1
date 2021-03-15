@@ -91,4 +91,5 @@ if ($?){
     info "nxxm has been installed in $INSTALL_FOLDER. In either a new cmd of after a reboot nxxm will be available on your Path."
 }else{
     Abort "Installation failed, please contact us via nxxm.io. We would be happy to help you."
+    [Environment]::Exit(1)
 }
