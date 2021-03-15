@@ -80,7 +80,7 @@ info "nxxm is installed, downloading included tools."
 
  New-Item "C:\ProgramData\installdeps_folder" -itemType Directory
  New-Item "C:\ProgramData\installdeps_folder\installdeps.cpp" -itemType File
-cmd.exe /c "C:\ProgramData\nxxm\nxxm.exe  C:\ProgramData\installdeps_folder\ --dont-upgrade"
+cmd.exe /c "C:\ProgramData\nxxm\nxxm.exe C:\ProgramData\installdeps_folder\ --dont-upgrade"
 
 if ($?){
     info "nxxm has been installed in $INSTALL_FOLDER. In either a new cmd of after a reboot nxxm will be available on your Path."
