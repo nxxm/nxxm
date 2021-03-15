@@ -78,7 +78,7 @@ $objExec = $shell.Exec($command)
 if (!($?))
 {
     Abort "Installation failed, please contact us via nxxm.io. We would be happy to help you."
-    exit 1
+    [Environment]::Exit(1)
 }
 
 Do { 
