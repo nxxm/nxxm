@@ -68,15 +68,20 @@ if (!$?){
 }
 
 info "nxxm is installed, downloading included tools."
-$installdeps_folder = New-TemporaryDirectory
-$installdeps_file = (Join-Path -Path $installdeps_folder -ChildPath "installdeps.cpp")[0]
-$text = $texte | Out-File -Encoding "ASCII" -FilePath "$installdeps_file"
+#$installdeps_folder = New-TemporaryDirectory
+#$installdeps_file = (Join-Path -Path $installdeps_folder -ChildPath "installdeps.cpp")[0]
+#$text = $texte | Out-File -Encoding "ASCII" -FilePath "$installdeps_file"
+
 
 #$NXXM_EXE $installdeps_folder --dont-upgrade
 #$command = "cmd.exe /C ""$NXXM_EXE $installdeps_folder --dont-upgrade """
-cmd.exe /c "$NXXM_EXE  $installdeps_folder --dont-upgrade"
 #$shell = New-Object -Com WScript.Shell
 #$objExec = $shell.Exec($command)
+
+ New-Item "C:\ProgramData\installdeps_folder" -itemType Directory
+ New-Item "C:\ProgramData\installdeps_folder\installdeps.cpp" -itemType File
+cmd.exe /c "C:\ProgramData\nxxm\nxxm.exe  C:\ProgramData\installdeps_folder\installdeps.cpp --dont-upgrade"
+
 if ($?){
     info "nxxm has been installed in $INSTALL_FOLDER. In either a new cmd of after a reboot nxxm will be available on your Path."
 }else{
