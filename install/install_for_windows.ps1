@@ -1,7 +1,7 @@
 $INSTALL_FOLDER="C:\ProgramData\nxxm"
-$NXXM_URL="https://github.com/nxxm/nxxm/releases/download/v0.0.12/nxxm-v0.0.12-windows-win64.zip"
+$NXXM_URL="https://github.com/nxxm/nxxm/releases/download/v0.0.13/nxxm-v0.0.13-windows-win64.zip"
 $NXXM_EXE="$INSTALL_FOLDER\nxxm.exe"
-$Findtext =  "error"
+$Findtext =  "[err]"
 [bool] $is_error = 0
 $texte = '#include <iostream>
 int main()
