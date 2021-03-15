@@ -1,7 +1,8 @@
 $INSTALL_FOLDER="C:\ProgramData\nxxm"
 $NXXM_URL="https://github.com/nxxm/nxxm/releases/download/v0.0.12/nxxm-v0.0.12-windows-win64.zip"
 $NXXM_EXE="$INSTALL_FOLDER\nxxm.exe"
-
+$Findtext =  "[err]"
+[bool] $is_error = 0
 $texte = '#include <iostream>
 int main()
 {
@@ -75,21 +76,18 @@ $text = $texte | Out-File -Encoding "ASCII" -FilePath "$installdeps_file"
 $command = "cmd.exe /C ""$NXXM_EXE $installdeps_folder --dont-upgrade """
 $shell = New-Object -Com WScript.Shell
 $objExec = $shell.Exec($command)
-Write-Host("Variable de l enfer " + $objExec)
-if (!($?))
-{
-    Abort "Installation failed, please contact us via nxxm.io. We would be happy to help you."
-    [Environment]::Exit(1)
-}
 
 Do { 
 	$line = $objExec.StdOut.ReadLine()
     Write-Host $line
+    
+    if ($line -match $Findtext)
+    {$is_error = 1}
 } while ($objExec.StdOut.AtEndOfStream -ne $true)
    
-if ($?){
-    info "nxxm has been installed in $INSTALL_FOLDER. In either a new cmd of after a reboot nxxm will be available on your Path."
-}else{
+if ($is_error){
     Abort "Installation failed, please contact us via nxxm.io. We would be happy to help you."
-    [Environment]::Exit(1)
+    [Environment]::Exit(1)  
+}else{
+    info "nxxm has been installed in $INSTALL_FOLDER. In either a new cmd of after a reboot nxxm will be available on your Path."
 }
