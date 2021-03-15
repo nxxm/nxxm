@@ -72,15 +72,18 @@ $installdeps_folder = New-TemporaryDirectory
 $installdeps_file = (Join-Path -Path $installdeps_folder -ChildPath "installdeps.cpp")[0]
 $text = $texte | Out-File -Encoding "ASCII" -FilePath "$installdeps_file"
 
-$NXXM_EXE $installdeps_folder --dont-upgrade
+#$NXXM_EXE $installdeps_folder --dont-upgrade
 #$command = "cmd.exe /C ""$NXXM_EXE $installdeps_folder --dont-upgrade """
+cmd.exe /c "$NXXM_EXE  $installdeps_folder --dont-upgrade"
 #$shell = New-Object -Com WScript.Shell
 #$objExec = $shell.Exec($command)
-#if (!($?))
-#{
-#    Abort "Installation failed, please contact us via nxxm.io. We would be happy to help you."
- #   [Environment]::Exit(1)
-#}
+if ($?){
+    info "nxxm has been installed in $INSTALL_FOLDER. In either a new cmd of after a reboot nxxm will be available on your Path."
+}else{
+    Abort "Installation failed, please contact us via nxxm.io. We would be happy to help you."
+    exit 1
+}
+
 
 #Do { 
 #	$line = $objExec.StdOut.ReadLine()
