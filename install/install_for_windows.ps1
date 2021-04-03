@@ -1,7 +1,6 @@
 $INSTALL_FOLDER="C:\ProgramData\nxxm"
 $NXXM_URL="https://github.com/nxxm/nxxm/releases/download/v0.0.13/nxxm-v0.0.13-windows-win64.zip"
 $NXXM_EXE="$INSTALL_FOLDER\nxxm.exe"
-
 $texte = '#include <iostream>
 int main()
 {
@@ -72,17 +71,11 @@ $installdeps_folder = New-TemporaryDirectory
 $installdeps_file = (Join-Path -Path $installdeps_folder -ChildPath "installdeps.cpp")[0]
 $text = $texte | Out-File -Encoding "ASCII" -FilePath "$installdeps_file"
 
-$command = "cmd.exe /C ""$NXXM_EXE $installdeps_folder """
-$shell = New-Object -Com WScript.Shell
-$objExec = $shell.Exec($command)
-
-Do { 
-	$line = $objExec.StdOut.ReadLine()
-    Write-Host $line
-} while ($objExec.StdOut.AtEndOfStream -ne $true)
-   
+cmd.exe /c "$NXXM_EXE $installdeps_folder"   
 if ($?){
     info "nxxm has been installed in $INSTALL_FOLDER. In either a new cmd of after a reboot nxxm will be available on your Path."
+ 
 }else{
     Abort "Installation failed, please contact us via nxxm.io. We would be happy to help you."
+    [Environment]::Exit(1)  
 }
