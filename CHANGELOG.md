@@ -1,5 +1,22 @@
 # nxxm : CHANGELOG
 
+## v0.0.14 - codename **fast forward**
+
+### Features
+  - Emsdk 2.0.15 with full c++ exceptions support for Webassembly 
+
+### Bug fixes
+  - Support parallel use of nxxm software with inteprocess locking capabilities
+  - Fix emsdk initialization and installation to a fixed defined version
+  - Fixes to enable libgit2 to be built by nxxm
+
+nxxm: 6c18d33ed1b07db36f93e52d177b794e28de10cf 
+
+##### Archives Checksums
+nxxm-v0.0.14-linux-x86_64.zip:4D6F857AB5D62EA2D8C0EAD0A436079E694C8EC9
+nxxm-v0.0.14-macOS.zip:503C5236F2556069660E7E4C5AAD6D75EBC35A47
+nxxm-v0.0.14-windows-win64.zip:58C951CC59A53962EB0388FBE0E81CDB9F07F7FF
+
 ## v0.0.13 - codename **embedded embarrassment** 💉
 
 ### Bug fixes
